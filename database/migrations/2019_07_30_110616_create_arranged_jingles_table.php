@@ -15,10 +15,10 @@ class CreateArrangedJinglesTable extends Migration
     {
         Schema::create('arranged_jingles', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('channel_id')->comment('频道id,关联channels表');
             $table->string('group_name')->comment('jingle单分组名');
             $table->boolean('is_share')->comment('是否共享，0 不共享 1 共享');
             $table->integer('create_staff_id')->comment('创建者id,关联merchant_users表');
-            $table->integer('sharer_staff_id')->comment('共享者id,关联merchant_users表');
             $table->softDeletes();
             $table->timestamps();
         });
