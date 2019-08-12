@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 
 class UsersController extends Controller
 {
@@ -19,13 +20,15 @@ class UsersController extends Controller
     }
 
     //编辑页面
-    public function edit()
+    public function edit(User $user)
     {
-
+        return view('users.edit',compact('user'));
     }
 
     //编辑提交
-    public function update(){
-
+    public function update(Request $request, User $user)
+    {
+        $user->update($request->all());
+        return redirect()->route('users.show',$user->id)->with('success','个人资料更新成功');
     }
 }
