@@ -38,5 +38,4 @@ class User extends Authenticatable implements MustVerifyEmailContract
         'email_verified_at' => 'datetime',
     ];
 
-    protected $table = 'users';
 }
